@@ -10,16 +10,18 @@ const prompt = require('co-prompt');
 
 program
   .arguments('')
-  //.option('-u, --username <username>', 'The user to authenticate as')
-  //.option('-p, --password <password>', 'The users password')
-  .action(function(file){
+  .action(() => {
     console.log('action is being run')
     co(function *(){
+      let fileObject = {}
       console.log('cofunction is being run')
-    let idAccessKey = yield prompt('Access Key ID: ');
-    let accessKey = yield prompt.password('Access Key: ')
-    console.log('functioned username: ', idAccessKey)
-    console.log('functioned password: ', accessKey)
+      let idAccessKey = yield prompt('Access Key ID: ');
+      let accessKey = yield prompt.password('Access Key: ')
+      const accessObject = JSON.stringify({ACCESS_KEY_ID: idAccessKey, ACCESS_KEY: accessKey})
+      fs.writeFile('AWS_access.js', accessObject, (err) => {
+        if (err) throw err;
+        else console.log('file created!')
+      })
     })
   })
   .parse(process.argv)
