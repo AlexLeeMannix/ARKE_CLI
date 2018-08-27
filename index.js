@@ -3,6 +3,7 @@
 console.log('Hello World')
 
 const fs = require('fs')
+const path = require('path')
 const program = require('commander');
 const co = require('co');
 const prompt = require('co-prompt');

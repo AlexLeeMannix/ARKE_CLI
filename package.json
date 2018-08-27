@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": {
     "testcom": "./index.js",
-    "run": "./main.js"
+    "runtestcom": "./main.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
